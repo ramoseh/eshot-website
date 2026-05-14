@@ -42,7 +42,51 @@
 
   <!-- NAVBAR -->
   <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4">
-    <!-- Task 2 -->
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#inicio">
+        <img src="img/logo.png" alt="Eshot Vinos y Licores" class="h-12 w-auto" />
+      </a>
+
+      <!-- Links desktop -->
+      <ul class="hidden md:flex items-center gap-8 text-sm font-semibold uppercase tracking-widest">
+        <li><a href="#nosotros"  class="hover:text-teal transition-colors">Nosotros</a></li>
+        <li><a href="#servicios" class="hover:text-teal transition-colors">Servicios</a></li>
+        <li><a href="#productos" class="hover:text-teal transition-colors">Productos</a></li>
+        <li><a href="#galeria"   class="hover:text-teal transition-colors">Galería</a></li>
+        <li>
+          <a href="https://wa.me/523322430594?text=Hola,%20me%20interesa%20cotizar"
+             target="_blank" rel="noopener noreferrer"
+             class="bg-teal text-black px-5 py-2 rounded-full hover:bg-opacity-80 transition-all">
+            Cotizar
+          </a>
+        </li>
+      </ul>
+
+      <!-- Botón hamburger mobile -->
+      <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Abrir menú">
+        <span class="block w-6 h-0.5 bg-white"></span>
+        <span class="block w-6 h-0.5 bg-white"></span>
+        <span class="block w-6 h-0.5 bg-white"></span>
+      </button>
+    </div>
+
+    <!-- Menú mobile desplegable -->
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-black border-t border-zinc-800">
+      <ul class="flex flex-col gap-4 pt-4 text-sm font-semibold uppercase tracking-widest">
+        <li><a href="#nosotros"  class="block hover:text-teal transition-colors">Nosotros</a></li>
+        <li><a href="#servicios" class="block hover:text-teal transition-colors">Servicios</a></li>
+        <li><a href="#productos" class="block hover:text-teal transition-colors">Productos</a></li>
+        <li><a href="#galeria"   class="block hover:text-teal transition-colors">Galería</a></li>
+        <li>
+          <a href="https://wa.me/523322430594?text=Hola,%20me%20interesa%20cotizar"
+             target="_blank" rel="noopener noreferrer"
+             class="inline-block bg-teal text-black px-5 py-2 rounded-full">
+            Cotizar
+          </a>
+        </li>
+      </ul>
+    </div>
   </nav>
 
   <!-- 1. HERO -->
