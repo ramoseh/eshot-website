@@ -1,0 +1,24 @@
+:root {
+  --teal:         #00C8CC;
+  --magenta:      #CC00CC;
+  --lime:         #C8D400;
+  --eshot-green:  #6CBF00;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#navbar {
+  background: transparent;
+}
+
+#navbar.scrolled {
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 rgba(0, 200, 204, 0.2);
+}
+
+#inicio {
+  padding-top: 80px;
+}
