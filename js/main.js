@@ -1,1 +1,1 @@
-// main.js — se completa en Task 10
+// AOS.init(), navbar scroll behavior y mobile menu toggle — implementados en Task 10
