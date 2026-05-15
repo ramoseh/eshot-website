@@ -1,0 +1,27 @@
+{
+  "name": "eshot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build:css": "tailwindcss -i ./css/tailwind-input.css -o ./css/output.css --minify",
+    "watch:css": "tailwindcss -i ./css/tailwind-input.css -o ./css/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramoseh/eshot-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ramoseh/eshot-website/issues"
+  },
+  "homepage": "https://github.com/ramoseh/eshot-website#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}

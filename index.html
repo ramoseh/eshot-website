@@ -1,55 +1,42 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preload" as="image" href="img/hero-bg.jpg" fetchpriority="high" />
+  <meta name="theme-color" content="#000000" />
   <title>Eshot — Vinos y Licores para Bodas y Eventos en Guadalajara</title>
   <meta name="description" content="Eshot ofrece vinos, licores y barras libres para bodas, XV años y eventos sociales en Guadalajara. Cotiza tu paquete por WhatsApp: +52 33 2243 0594." />
-  <meta name="keywords" content="vinos y licores para bodas Guadalajara, barra libre eventos Guadalajara, proveedor licores eventos Jalisco, paquetes vinos XV años, servicio bebidas eventos sociales" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://eshot.com.mx/" />
+  <link rel="canonical" href="https://eshot-vinosylicores.com/" />
 
   <meta property="og:type"        content="website" />
-  <meta property="og:url"         content="https://eshot.com.mx/" />
+  <meta property="og:url"         content="https://eshot-vinosylicores.com/" />
   <meta property="og:title"       content="Eshot — Vinos y Licores para Bodas y Eventos en Guadalajara" />
   <meta property="og:description" content="Vinos, licores y barras libres para bodas, XV años y eventos sociales en Guadalajara. Cotiza sin compromiso." />
-  <meta property="og:image"       content="https://eshot.com.mx/img/hero-bg.jpg" />
+  <meta property="og:image"       content="https://eshot-vinosylicores.com/img/hero-bg.jpg" />
   <meta property="og:locale"      content="es_MX" />
   <meta property="og:site_name"   content="Eshot Vinos y Licores" />
 
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="Eshot — Vinos y Licores para Bodas y Eventos en Guadalajara" />
   <meta name="twitter:description" content="Vinos, licores y barras libres para bodas y eventos en Guadalajara." />
-  <meta name="twitter:image"       content="https://eshot.com.mx/img/hero-bg.jpg" />
+  <meta name="twitter:image"       content="https://eshot-vinosylicores.com/img/hero-bg.jpg" />
   <link rel="icon" type="image/png" href="img/logo.png" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" /></noscript>
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            teal:          '#00C8CC',
-            magenta:       '#CC00CC',
-            lime:          '#C8D400',
-            'eshot-green': '#6CBF00',
-          },
-          fontFamily: {
-            serif: ['Playfair Display', 'serif'],
-            sans:  ['Inter', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Tailwind CSS (build local — 15 KB vs 350 KB CDN) -->
+  <link rel="stylesheet" href="css/output.css" />
 
   <!-- AOS -->
+  <link rel="preconnect" href="https://unpkg.com" />
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
   <!-- Custom CSS -->
@@ -62,7 +49,7 @@
     <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
       <!-- Logo -->
       <a href="#inicio">
-        <img src="img/logo.png" alt="Eshot Vinos y Licores" class="h-12 w-auto" />
+        <img src="img/logo.png" alt="Eshot Vinos y Licores" class="h-12 w-auto" width="200" height="200" />
       </a>
 
       <!-- Links desktop -->
@@ -110,13 +97,13 @@
   <section id="inicio" class="relative min-h-screen flex items-center justify-center">
     <!-- Imagen de fondo con overlay -->
     <div class="absolute inset-0 z-0">
-      <img src="img/hero-bg.jpg" alt="" class="w-full h-full object-cover opacity-30" loading="eager" />
+      <img src="img/hero-bg.jpg" alt="" class="w-full h-full object-cover opacity-30" loading="eager" fetchpriority="high" />
       <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black"></div>
     </div>
 
     <!-- Contenido central -->
-    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="800">
-      <img src="img/logo.png" alt="Eshot Vinos y Licores" class="h-36 w-auto mx-auto mb-8 drop-shadow-2xl" />
+    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto hero-animate">
+      <img src="img/logo.png" alt="Eshot Vinos y Licores" class="h-36 w-auto mx-auto mb-8 drop-shadow-2xl" width="200" height="200" fetchpriority="high" />
 
       <h1 class="font-serif text-4xl md:text-6xl font-bold leading-tight mb-4">
         El brindis perfecto<br />
@@ -263,6 +250,20 @@
       </a>
     </div>
 
+    <div class="bg-zinc-900 border border-zinc-800 hover:border-teal/50 rounded-2xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2"
+         data-aos="fade-up" data-aos-delay="400">
+      <span class="text-5xl mb-4" aria-hidden="true">🍾</span>
+      <h3 class="font-serif text-xl font-bold mb-3 text-teal">Barra Libre</h3>
+      <p class="text-gray-400 text-sm leading-relaxed mb-6">
+        Servicio completo de barra libre para bodas y eventos. Bebidas, logística y entrega puntual incluidas. Personaliza según el tipo de evento y número de invitados.
+      </p>
+      <a href="https://wa.me/523322430594?text=Hola,%20me%20interesa%20cotizar%20una%20barra%20libre"
+         target="_blank" rel="noopener noreferrer"
+         class="mt-auto text-sm font-semibold text-teal border border-teal px-5 py-2 rounded-full hover:bg-teal hover:text-black transition-all">
+        Cotizar vía WhatsApp
+      </a>
+    </div>
+
   </div>
 </div>
   </section>
@@ -283,7 +284,7 @@
 
     <div class="group relative overflow-hidden rounded-2xl" data-aos="fade-up" data-aos-delay="0">
       <img src="img/products/vinos-tintos.jpg" alt="Vinos tintos para eventos Guadalajara"
-           class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+           class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" width="600" height="256" />
       <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
       <div class="absolute inset-x-0 bottom-0 p-6">
         <h3 class="font-serif text-xl font-bold">Vinos Tintos</h3>
@@ -300,7 +301,7 @@
 
     <div class="group relative overflow-hidden rounded-2xl" data-aos="fade-up" data-aos-delay="100">
       <img src="img/products/vinos-blancos.jpg" alt="Vinos blancos para eventos Guadalajara"
-           class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+           class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" width="600" height="256" />
       <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
       <div class="absolute inset-x-0 bottom-0 p-6">
         <h3 class="font-serif text-xl font-bold">Vinos Blancos</h3>
@@ -317,7 +318,7 @@
 
     <div class="group relative overflow-hidden rounded-2xl" data-aos="fade-up" data-aos-delay="200">
       <img src="img/products/espumosos.jpg" alt="Champagne y espumosos para bodas Guadalajara"
-           class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+           class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" width="600" height="256" />
       <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
       <div class="absolute inset-x-0 bottom-0 p-6">
         <h3 class="font-serif text-xl font-bold">Espumosos y Champagne</h3>
@@ -334,7 +335,7 @@
 
     <div class="group relative overflow-hidden rounded-2xl" data-aos="fade-up" data-aos-delay="0">
       <img src="img/products/destilados.jpg" alt="Destilados y licores premium Guadalajara"
-           class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+           class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" width="600" height="256" />
       <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
       <div class="absolute inset-x-0 bottom-0 p-6">
         <h3 class="font-serif text-xl font-bold">Destilados</h3>
@@ -351,7 +352,7 @@
 
     <div class="group relative overflow-hidden rounded-2xl" data-aos="fade-up" data-aos-delay="100">
       <img src="img/products/cocteleria.jpg" alt="Coctelería y mixología para eventos Guadalajara"
-           class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+           class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" width="600" height="256" />
       <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
       <div class="absolute inset-x-0 bottom-0 p-6">
         <h3 class="font-serif text-xl font-bold">Coctelería y Mixología</h3>
@@ -368,7 +369,7 @@
 
     <div class="group relative overflow-hidden rounded-2xl" data-aos="fade-up" data-aos-delay="200">
       <img src="img/products/paquetes.jpg" alt="Paquetes especiales de bebidas para eventos"
-           class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+           class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" width="600" height="256" />
       <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
       <div class="absolute inset-x-0 bottom-0 p-6">
         <h3 class="font-serif text-xl font-bold">Paquetes Especiales</h3>
@@ -413,7 +414,7 @@
 
     <div class="group relative overflow-hidden rounded-xl aspect-square" data-aos="fade-up" data-aos-delay="0">
       <img src="img/gallery/evento-01.jpg" alt="Boda con vinos y licores Guadalajara"
-           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" width="600" height="600" />
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
         <span class="text-white text-sm font-semibold">Boda</span>
       </div>
@@ -421,7 +422,7 @@
 
     <div class="group relative overflow-hidden rounded-xl aspect-square" data-aos="fade-up" data-aos-delay="50">
       <img src="img/gallery/evento-02.jpg" alt="Evento social con servicio de bebidas"
-           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" width="600" height="600" />
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
         <span class="text-white text-sm font-semibold">Evento Social</span>
       </div>
@@ -429,7 +430,7 @@
 
     <div class="group relative overflow-hidden rounded-xl aspect-square" data-aos="fade-up" data-aos-delay="100">
       <img src="img/gallery/evento-03.jpg" alt="Fiesta privada con barra libre"
-           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" width="600" height="600" />
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
         <span class="text-white text-sm font-semibold">Fiesta Privada</span>
       </div>
@@ -437,7 +438,7 @@
 
     <div class="group relative overflow-hidden rounded-xl aspect-square" data-aos="fade-up" data-aos-delay="0">
       <img src="img/gallery/evento-04.jpg" alt="XV años con servicio de champagne"
-           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" width="600" height="600" />
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
         <span class="text-white text-sm font-semibold">XV Años</span>
       </div>
@@ -445,7 +446,7 @@
 
     <div class="group relative overflow-hidden rounded-xl aspect-square" data-aos="fade-up" data-aos-delay="50">
       <img src="img/gallery/evento-05.jpg" alt="Boda con champagne espumoso Guadalajara"
-           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" width="600" height="600" />
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
         <span class="text-white text-sm font-semibold">Boda</span>
       </div>
@@ -453,7 +454,7 @@
 
     <div class="group relative overflow-hidden rounded-xl aspect-square" data-aos="fade-up" data-aos-delay="100">
       <img src="img/gallery/evento-06.jpg" alt="Evento corporativo con bebidas premium"
-           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" width="600" height="600" />
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
         <span class="text-white text-sm font-semibold">Corporativo</span>
       </div>
@@ -546,7 +547,7 @@
     <div class="grid md:grid-cols-3 gap-8 mb-8">
 
       <div>
-        <img src="img/logo.png" alt="Eshot Vinos y Licores" class="h-16 w-auto mb-4" />
+        <img src="img/logo.png" alt="Eshot Vinos y Licores" class="h-16 w-auto mb-4" width="200" height="200" />
         <p class="text-gray-500 text-sm leading-relaxed">
           Proveedor de vinos y licores para bodas y eventos sociales en Guadalajara, Jalisco.
         </p>
@@ -572,7 +573,7 @@
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
               <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.556 4.115 1.529 5.843L.057 23.571l5.9-1.473A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.652-.51-5.17-1.402l-.371-.219-3.502.874.933-3.41-.243-.389A9.953 9.953 0 0 1 2 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
             </svg>
-            <a href="https://wa.me/523322430594" target="_blank" rel="noopener noreferrer" class="hover:text-teal transition-colors">+52 33 2243 0594</a>
+            <a href="tel:+523322430594" class="hover:text-teal transition-colors">+52 33 2243 0594</a>
           </li>
           <li class="flex items-start gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-teal mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -616,14 +617,35 @@
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
+  "@id": "https://eshot-vinosylicores.com/",
   "name": "Eshot Vinos y Licores",
-  "description": "Proveedor de vinos, licores y barras libres para bodas y eventos sociales en Guadalajara, Jalisco.",
-  "url": "https://eshot.com.mx",
+  "description": "Proveedor de vinos, licores y barras libres para bodas, XV años y eventos sociales en Guadalajara, Jalisco.",
+  "url": "https://eshot-vinosylicores.com/",
   "telephone": "+523322430594",
   "email": "eshot.vinosylicores@gmail.com",
+  "priceRange": "$$$",
+  "image": [
+    "https://eshot-vinosylicores.com/img/logo.png",
+    "https://eshot-vinosylicores.com/img/hero-bg.jpg"
+  ],
+  "logo": "https://eshot-vinosylicores.com/img/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Guadalajara",
+    "addressRegion": "Jalisco",
+    "addressCountry": "MX"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 20.6597,
+    "longitude": -103.3496
+  },
   "areaServed": [
-    "Guadalajara", "Zapopan", "Tlaquepaque", "Tonalá",
-    "Tlajomulco de Zúñiga", "El Salto", "Ixtlahuacán de los Membrillos", "Juanacatlán"
+    { "@type": "City", "name": "Guadalajara" },
+    { "@type": "City", "name": "Zapopan" },
+    { "@type": "City", "name": "Tlaquepaque" },
+    { "@type": "City", "name": "Tonalá" },
+    { "@type": "City", "name": "Tlajomulco de Zúñiga" }
   ],
   "serviceArea": {
     "@type": "GeoCircle",
@@ -632,25 +654,47 @@
       "latitude": 20.6597,
       "longitude": -103.3496
     },
-    "geoRadius": "50000"
+    "geoRadius": 50000
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "09:00",
+    "closes": "21:00"
   },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Vinos y Licores para Eventos",
     "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Barra Libre" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Paquetes de Vinos" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Licores Premium" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Asesoría Personalizada" } }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Barra Libre", "description": "Servicio completo de barra libre para bodas y eventos sociales en Guadalajara." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Paquetes de Vinos", "description": "Curación de vinos nacionales e importados: tintos, blancos, rosados y espumosos por evento." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Licores Premium", "description": "Destilados, whiskies, tequilas, mezcales y más. Marcas premium para eventos de alto nivel." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Asesoría Personalizada", "description": "Asesoría para elegir las bebidas perfectas según el tipo de evento, número de invitados y presupuesto." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Coctelería y Mixología", "description": "Cocteles personalizados para bodas, XV años y eventos corporativos en Guadalajara." } }
     ]
   },
-  "sameAs": []
+  "sameAs": [
+    "https://maps.app.goo.gl/TURkqJS5p7n8CVsV8",
+    "https://www.instagram.com/eshot.vinosylicores"
+  ]
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://eshot-vinosylicores.com/#website",
+  "url": "https://eshot-vinosylicores.com/",
+  "name": "Eshot Vinos y Licores",
+  "description": "Proveedor de vinos, licores y barras libres para bodas y eventos sociales en Guadalajara, Jalisco.",
+  "publisher": { "@id": "https://eshot-vinosylicores.com/" },
+  "inLanguage": "es-MX"
 }
 </script>
 
   <!-- AOS JS -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
   <!-- Custom JS -->
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
