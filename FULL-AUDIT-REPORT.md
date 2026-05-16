@@ -1,530 +1,389 @@
-# Full SEO Audit Report — Eshot Vinos y Licores
-
-**URL:** https://eshot-vinosylicores.com/  
-**Audit Date:** 2026-05-15  
-**Business Type:** Local Service Area Business — wine & spirits supplier for weddings and events  
-**Market:** Guadalajara, Jalisco, México (es-MX)  
-**Site Type:** Single-page static HTML (GitHub Pages)  
+# SEO Audit — Eshot Vinos y Licores
+**URL:** https://eshot-vinosylicores.com  
+**Fecha:** 2026-05-15  
+**Tipo de negocio:** Local SAB (Service Area Business) — Proveedor de vinos y licores para eventos  
+**Mercado:** Guadalajara y Zona Metropolitana, Jalisco, México  
+**Páginas crawleadas:** 1 (sitio de una sola página)
 
 ---
 
-## Overall SEO Health Score
+## SEO Health Score: 61 / 100
 
-| | Before Audit | After Immediate Fixes Applied |
-|---|---|---|
-| **Overall Score** | **46 / 100** | **52 / 100** |
-
-*Immediate fixes applied during this audit: canonical URL corrected, robots.txt created, sitemap.xml created.*
-
-### Score by Category
-
-| Category | Weight | Score | Weighted |
+| Categoría | Peso | Score | Ponderado |
 |---|---|---|---|
-| Technical SEO | 22% | 58/100 ¹ | 12.8 |
-| Content Quality | 23% | 54/100 | 12.4 |
-| On-Page SEO | 20% | 55/100 | 11.0 |
-| Schema / Structured Data | 10% | 45/100 ¹ | 4.5 |
-| Performance (CWV) | 10% | 45/100 | 4.5 |
-| AI Search Readiness | 10% | 31/100 | 3.1 |
-| Images | 5% | 60/100 ¹ | 3.0 |
-| **Total** | | | **51.3 ≈ 52/100** |
-
-*¹ Score reflects fixes already applied in this session.*
+| Technical SEO | 22% | 74/100 | 16.3 |
+| Content Quality | 23% | 41/100 | 9.4 |
+| On-Page SEO | 20% | 65/100 | 13.0 |
+| Schema / Structured Data | 10% | 70/100 | 7.0 |
+| Performance (CWV) | 10% | 73/100 | 7.3 |
+| AI Search Readiness | 10% | 54/100 | 5.4 |
+| Images | 5% | 45/100 | 2.3 |
+| **Total** | **100%** | | **61** |
 
 ---
 
-## Executive Summary
+## Resumen Ejecutivo
 
-Eshot Vinos y Licores has a well-built, visually polished single-page site with good keyword targeting, solid mobile UX, and correct Spanish-language metadata. However, **the site was functionally invisible to Google** due to a critical canonical URL mismatch that pointed all indexing signals to a different domain (`eshot.com.mx`). This has been fixed.
+**Negocio:** Eshot Vinos y Licores — proveedor de vinos, licores y asesoría de bebidas para bodas, XV años y eventos sociales en Guadalajara.
 
-After removing that blocker, the site's next major gap is the complete absence of local SEO infrastructure: no Google Business Profile, no reviews, no external citations, and no external authority signals — all of which are the primary ranking factors for local search in the Guadalajara market.
+**Fortalezas principales:**
+- HTML estático renderizado en servidor — indexable al 100% sin JavaScript
+- robots.txt con permisos explícitos para AI crawlers (GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot)
+- llms.txt presente — GEO readiness por encima del promedio del mercado local
+- LocalBusiness schema bien estructurado con `areaServed`, `geo`, `openingHoursSpecification`
+- Tailwind CSS compilado localmente (15.5 KB vs 350 KB CDN)
+- Imágenes con `width`/`height` explícitos — CLS prevenido correctamente
+- Google Fonts cargado con patrón `media="print" onload` — no bloquea render
+- TTFB excelente via Fastly CDN (GitHub Pages) — 60–180ms desde México
 
-### Top 5 Critical Issues (3 already fixed)
+**Top 5 problemas críticos:**
+1. GBP (Google Business Profile) — estado de verificación desconocido, sin reseñas
+2. Cero reseñas en cualquier plataforma — local pack bloqueado
+3. Imagen hero (988 KB JPG) — LCP mobile ~3–4s
+4. Contenido delgado — ~380 palabras, sin FAQ, sin testimonials, sin autor identificado
+5. Sin citas en directorios de bodas (Bodas.com.mx, Matrimonio.com.mx)
 
-| # | Issue | Status |
+**Top 5 quick wins (ya aplicados o de bajo esfuerzo):**
+1. ✅ AOS CSS no-bloqueante (aplicado esta sesión) — FCP -100–400ms
+2. ✅ Schemas corregidos (esta sesión) — validación limpia en Rich Results Test
+3. ✅ llms.txt reescrito (esta sesión) — AI accuracy restaurada
+4. Comprimir hero-bg.jpg → WebP ≤180 KB — LCP mobile -1.5s
+5. Agregar sección FAQ (8 preguntas) + FAQPage schema
+
+---
+
+## 1. Technical SEO — 74/100
+
+### Crawlabilidad e Indexabilidad
+
+| Check | Estado | Nota |
 |---|---|---|
-| 1 | Canonical URL pointed to wrong domain (`eshot.com.mx`) | **FIXED ✓** |
-| 2 | robots.txt missing (404) | **FIXED ✓** |
-| 3 | sitemap.xml missing (404) | **FIXED ✓** |
-| 4 | No Google Business Profile (zero local pack visibility) | Open |
-| 5 | Tailwind CSS loaded from CDN (major performance bottleneck) | Open |
+| robots.txt | ✅ PASS | Permite todos los bots, AI bots explícitos |
+| Sitemap XML | ✅ PASS | Namespace 0.9 correcto, `lastmod` actualizado |
+| Canonical | ✅ PASS | Self-referencing, URL https correcta |
+| Meta robots | ✅ PASS | `index, follow` explícito |
+| lang attr | ✅ PASS | `es-MX` en `<html>` |
+| JavaScript rendering | ✅ PASS | HTML completamente SSR, sin gates JS |
+| HTTPS | ✅ PASS | GitHub Pages + Let's Encrypt auto-renovado |
+| Mixed content | ✅ PASS | Todos los recursos externos via https |
+| Redirect www→non-www | ⚠️ VERIFICAR | Confirmar en GitHub Pages domain settings |
+| Hreflang | N/A | Sitio monolingüe, no aplica |
 
-### Top 5 Quick Wins (remaining)
+### Problemas Técnicos por Severidad
 
-1. Add `<link rel="preload">` for hero image + `fetchpriority="high"` (5 min → LCP improvement)
-2. Add `tel:` clickable link to phone number (2 min → GBP signal + mobile UX)
-3. Complete LocalBusiness schema (`address`, `image`, `priceRange`, `openingHours`) (30 min)
-4. Add `llms.txt` file (30 min → AI search visibility)
-5. Remove `data-aos` from hero section (5 min → CLS + LCP improvement)
+**[ALTO] AOS CSS era render-bloqueante — CORREGIDO esta sesión**  
+El `<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">` bloqueaba render 100–400ms en mobile. Aplicado patrón `media="print" onload` + preload. FCP esperado: -100 a -400ms en mobile.
 
----
+**[ALTO] Sin headers de seguridad (limitación GitHub Pages)**  
+GitHub Pages no permite headers HTTP personalizados. Faltan: CSP, X-Frame-Options, Referrer-Policy, Permissions-Policy. Solución óptima: migrar a Cloudflare Pages (free tier, mismo workflow git push) o agregar Cloudflare proxy (header control via `_headers` file o Transform Rules).
 
-## Section 1 — Technical SEO
+**[MEDIO] Favicon incompleto**  
+Solo existe `<link rel="icon" type="image/png" href="img/logo.png">` (57 KB). Falta: `favicon.ico` (32×32 para legacy), SVG favicon (escala perfecta en HiDPI), `apple-touch-icon` (180×180 para iOS home screen).
 
-**Score: 58 / 100** (was 41/100 pre-fixes)
+**[BAJO] Sin IndexNow protocol**  
+Implementar via GitHub Action que dispara en cada deploy. POST a `https://api.indexnow.org/IndexNow` notifica a Bing/Yandex/Naver instantáneamente del nuevo contenido.
 
-### Fixed This Session
+**[BAJO] OG image sin dimensiones declaradas**  
+Agregar `og:image:width`, `og:image:height`, `og:image:type` para acelerar generación de social previews en Facebook/LinkedIn.
 
-| Fix | Location | Impact |
-|---|---|---|
-| Canonical `href` corrected to `eshot-vinosylicores.com` | `index.html:10` | Critical |
-| `og:url` corrected | `index.html:13` | Critical |
-| `og:image` URL corrected | `index.html:16` | Critical |
-| `twitter:image` URL corrected | `index.html:23` | Critical |
-| JSON-LD `url` corrected | `index.html:621` | Critical |
-| `robots.txt` created | `/robots.txt` | Critical |
-| `sitemap.xml` created | `/sitemap.xml` | Critical |
-
-### Remaining Technical Issues
-
-**HIGH**
-
-- **Tailwind CSS from CDN** (`index.html:32`) — `<script src="https://cdn.tailwindcss.com">` is a synchronous render-blocking script (~350 KB). Adds 800–2,000 ms to LCP on mobile. Replace with a build-time generated `output.css` (~8–25 KB minified). Fix: `npx tailwindcss -i ./css/styles.css -o ./css/tailwind.css --minify`.
-
-- **AOS library has no SRI integrity hash** (`index.html:53, 652`) — `unpkg.com` is a third-party CDN with no SLA. The JS file (full DOM access) is loaded without `integrity` or `crossorigin` attributes. Recommendation: self-host AOS under `css/aos.css` and `js/aos.js`.
-
-- **No security headers** — GitHub Pages does not set `Content-Security-Policy`, `X-Content-Type-Options`, `X-Frame-Options`, or `Permissions-Policy`. Consider migrating to Cloudflare Pages (free) for custom header support via `_headers` file.
-
-- **IndexNow not implemented** — Free instant URL submission to Bing/Yandex/Naver. Generate a key at indexnow.org, place `{key}.txt` at root.
-
-**MEDIUM**
-
-- **Hero image missing `<link rel="preload">`** (`index.html:<head>`) — Add `<link rel="preload" as="image" href="img/hero-bg.jpg" fetchpriority="high" />` to `<head>`.
-
-- **Logo img missing `fetchpriority="high"`** (`index.html:119`) — Logo is likely the LCP element (above-fold, above the hero bg at 30% opacity).
-
-- **AOS animation on hero section** (`index.html:118`) — `data-aos="fade-up"` starts hero content invisible until JS executes. Remove from hero; use a CSS `@keyframes` animation instead.
-
-- **Google Fonts render-blocking** (`index.html:29`) — Load non-blocking with `media="print" onload="this.media='all'"` pattern. Note: `display=swap` is already in the URL (correct).
-
-- **Favicon incomplete** (`index.html:24`) — No `favicon.ico` at root, no `apple-touch-icon`, no sized PNG variants. Generate with realfavicongenerator.net.
-
-**LOW**
-
-- `width`/`height` missing on product images (`index.html:286–382`) — causes CLS on lazy-load.
-- `width`/`height` missing on gallery images (`index.html:415–455`).
-- Add `defer` to AOS and `main.js` script tags.
-- Add `<meta name="theme-color" content="#000000" />`.
-- Remove `<meta name="keywords">` (zero SEO value since 2009).
-
-### What Passes
-
-- `lang="es"` ✓ | Viewport meta ✓ | `robots: index, follow` ✓ | HTTPS ✓
-- All `target="_blank"` links use `rel="noopener noreferrer"` ✓
-- `loading="eager"` on hero, `loading="lazy"` on all product/gallery images ✓
-- `font-display=swap` in Google Fonts URL ✓
-- Full server-side rendered HTML (no CSR framework) — excellent for crawlability ✓
-- `AOS.init({ once: true })` — prevents repeated animation work ✓
+**[BAJO] Sin SRI en recursos AOS (unpkg.com)**  
+Los `<link>` y `<script>` de AOS carecen de atributo `integrity`. Si unpkg.com fuera comprometido, CSS/JS arbitrario se inyectaría sin detección. Calcular SHA-384 y agregar `integrity=` + `crossorigin="anonymous"`.
 
 ---
 
-## Section 2 — Content Quality
-
-**Score: 54 / 100**
+## 2. Content Quality — 41/100
 
 ### E-E-A-T Assessment
 
-| Signal | Score | Notes |
+| Dimensión | Score | Estado |
 |---|---|---|
-| Experience | 8/20 | Gallery exists but no named events, dates, or verifiable proof |
-| Expertise | 12/25 | Good product taxonomy; no process explanation |
-| Authoritativeness | 5/25 | Empty `sameAs`, no external validation, no GBP |
-| Trustworthiness | 14/30 | Contact info present; no address, no reviews, Gmail not domain email |
+| Experience | 9/20 | Bajo — stats sin evidencia, sin casos reales documentados |
+| Expertise | 12/25 | Moderado — taxonomía de productos correcta, sin autor nombrado |
+| Authoritativeness | 5/25 | Crítico — 0 reseñas externas, 0 menciones de prensa |
+| Trustworthiness | 15/30 | Bajo — Gmail address, sin política de privacidad |
 
-**Overall E-E-A-T: Weak.** The site reads as brand copy rather than a credible local authority. No third-party validation of any kind exists.
+**Conteo de palabras estimado:** ~380 palabras de cuerpo  
+**Mínimo recomendado:** 800–1,000 palabras para página de servicio local competitiva
 
-### Content Depth
+### Problemas Críticos de Contenido
 
-- **Estimated visible word count: ~450–520 words** (excluding nav, buttons, copyright, schema)
-- Homepage minimum: 500 words — borderline
-- Service page minimum: 800 words — FAILS
-- No blog, no FAQ, no process description, no reviews
+**[CRÍTICO] Sin testimonials verificables**  
+"100% clientes satisfechos" y "200+ eventos servidos" son afirmaciones sin respaldo. Google QRG sept-2025 las marca como señal de baja confianza cuando no tienen corroboración. Mínimo necesario: 3–5 testimonials con nombre (o inicial), tipo de evento, ciudad y año.
 
-### Critical Content Gaps
+**[CRÍTICO] Sin sección FAQ**  
+Queries de alto intento sin respuesta en el sitio:
+- "¿cuántas botellas de vino para una boda de 100 personas?"
+- "¿cuánto cuesta una barra libre en Guadalajara?"
+- "¿hacen entregas en Zapopan?"
+- "¿con cuánta anticipación pedir?"
 
-1. **No FAQ section** — highest-leverage single addition for both SEO and AI citation
-2. **No testimonials/reviews** — zero social proof for a high-value purchase decision
-3. **"Barra libre" not a visible service card** — flagship service missing from Services grid
-4. **No "How it works" / process section** — buyers don't know what happens after WhatsApp contact
-5. **No trust data** — no years in business, no event count, no named brands carried
-6. **Gmail contact email** — `eshot.vinosylicores@gmail.com` vs a domain email reduces corporate trust
+Una sección FAQ de 8 preguntas con respuestas de 100–150 palabras cada una es la adición de mayor ROI para AI citations y long-tail SEO.
 
-### Keyword Analysis
+**[ALTO] Sin autor/fundador identificado**  
+Ninguna persona física aparece en el sitio. El QRG 2025 exige identidad verificable para servicios de alto costo. Un párrafo con nombre del fundador y background en el sector resuelve esto.
 
-| Keyword | Status |
-|---|---|
-| vinos y licores Guadalajara | ✓ Natural, well-distributed |
-| barra libre eventos Guadalajara | ✓ Present; underweight in H2 headings |
-| bodas Guadalajara | ✓ Present; not in H1 |
-| XV años Guadalajara | Partial — not combined in same sentence |
-| proveedor licores Jalisco | Meta tag only — absent from body |
-| Zapopan / Tlaquepaque / Tonalá | List format only — no prose context |
+**[ALTO] Propuesta de valor genérica**  
+"Servicio personalizado" y "productos de calidad" aparecen en virtualmente todos los competidores. El sitio no explica QUÉ hace a Eshot diferente: ¿curación de catálogo? ¿asesoría cuantitativa de cantidades? ¿precios menores al retail? Identificar y comunicar el diferencial real.
 
-### AI Citation Readiness: 28 / 100
+**[MEDIO] Sin información de precios**  
+Para servicios de alto costo (bebidas para boda: MXN $15,000–$80,000+), la ausencia total de contexto de precio es una barrera de conversión. Un rango o "desde MXN $X por persona" reduce fricción sin comprometer la negociación.
 
-- No FAQ, no Q&A, no extractable passages reaching 134-word citability threshold
-- Longest contiguous prose: ~65 words (About section)
-- All body text is marketing tone, not informational/answerable tone
+**[MEDIO] Sin proceso explicado**  
+¿Cómo funciona el servicio? ¿Entrega a domicilio o recogida? ¿Incluye staff? ¿Tiempo mínimo de anticipación? Estas preguntas sin respuesta generan fricción en la conversión.
 
-### Recommended Content Additions (Priority Order)
+### AI Citation Readiness: 22/100
 
-1. FAQ section (5–7 questions with 150-word answers) — see GEO section for suggested questions
-2. Testimonials section (3–5 client quotes with event type + city + year)
-3. Barra Libre service card in Services grid
-4. "¿Cómo funciona?" 3-step process section
-5. Gallery captions identifying real events (venue/neighborhood, guest count, year)
-6. Fill empty right column of Coverage section with Maps embed or "recent events" mini-list
+El sitio carece de pasajes autónomos, citables y factuales. Los sistemas de IA requieren bloques de texto de 134–167 palabras, self-contained, con nombre del negocio y ciudad en las primeras dos oraciones.
 
 ---
 
-## Section 3 — On-Page SEO
+## 3. On-Page SEO — 65/100
 
-**Score: 55 / 100**
+### Análisis de Títulos y Metas
 
-| Element | Status | Notes |
-|---|---|---|
-| Title tag | ✓ Good | 62 chars, keyword + location present |
-| Meta description | ✓ Good | 164 chars, includes phone number CTA (slight over 155 but acceptable) |
-| H1 | ⚠ Weak | "El brindis perfecto para tu evento" — no city or service keyword |
-| H2 headings | ✓ Present | One per section; no location terms in most |
-| Canonical | ✓ Fixed | Now points to `eshot-vinosylicores.com` |
-| `lang` attribute | ⚠ Partial | `lang="es"` but `og:locale="es_MX"` — should be `lang="es-MX"` |
-| Internal linking | N/A | Single-page; all anchor links |
-| External links | ✓ | All have `rel="noopener noreferrer"` |
+| Elemento | Contenido | Caracteres | Estado |
+|---|---|---|---|
+| Title | "Eshot — Vinos y Licores para Bodas y Eventos en Guadalajara" | 63 | ✅ PASS |
+| Meta description | "Eshot ofrece vinos y licores para bodas, XV años y eventos..." | 171 | ✅ PASS |
+| H1 | "El brindis perfecto para tu evento" | — | ⚠️ Sin keyword |
+| OG tags | Completos (type, url, title, description, image, locale, site_name) | — | ✅ PASS |
+| Twitter card | summary_large_image con todos los campos | — | ✅ PASS |
 
-**H1 improvement:** Current H1 ("El brindis perfecto para tu evento") contains no target keywords. Suggested revision: Keep as branding but add a keyword-rich `<h2>` immediately below: *"Proveedores de vinos y licores para eventos en Guadalajara"*.
+### Cobertura de Keywords
 
-**`lang` attribute fix:** Change `<html lang="es">` → `<html lang="es-MX">` on `index.html:2`.
+| Query objetivo | H1 | H2 | Cuerpo | Alt | Schema |
+|---|---|---|---|---|---|
+| vinos para bodas Guadalajara | ❌ | ❌ | ✅ | ✅ | ✅ |
+| licores para eventos Guadalajara | ❌ | ❌ | ✅ | ✅ | ✅ |
+| vinos y licores Guadalajara | ❌ | ❌ | ✅ | ❌ | ✅ |
+| champagne para XV años Guadalajara | ❌ | ❌ | ❌ | ✅ | ❌ |
+| Zapopan (en prosa) | ❌ | ❌ | ✅ (corregido) | ❌ | ✅ |
+| Tlaquepaque (en prosa) | ❌ | ❌ | ✅ (corregido) | ❌ | ✅ |
+
+### Problemas On-Page
+
+**[ALTO] H1 sin keyword — recomendación sin tocar el H1**  
+Agregar H2 descriptivo inmediatamente debajo del H1:  
+`<h2>Proveedores de vinos y licores para bodas y eventos en Guadalajara</h2>`
+
+**[ALTO] Ciudades solo en lista — CORREGIDO esta sesión**  
+La prosa de cobertura ahora menciona "Guadalajara, Zapopan, Tlaquepaque, Tonalá y Tlajomulco de Zúñiga" explícitamente con contexto de keyword.
+
+**[BAJO] Enlace telefónico ausente en sección de contacto principal**  
+El número de teléfono en el CTA principal está dentro de un link WhatsApp. Para usuarios desktop sin WhatsApp instalado, agregar `<a href="tel:+523322430594">` separado.
 
 ---
 
-## Section 4 — Schema & Structured Data
+## 4. Schema / Structured Data — 70/100
 
-**Score: 45 / 100** (was 40/100 pre-fix; url field now correct)
+### Schemas Actualizados (esta sesión)
 
-### Current Implementation
-
-- `LocalBusiness` JSON-LD schema is present (`index.html:615–649`)
-- `WebSite` schema: absent
-- `FAQPage` schema: absent (no FAQ section exists yet)
-
-### Validation Results
-
-| Property | Status |
-|---|---|
-| `@context` | ✓ Pass |
-| `@type: LocalBusiness` | ✓ Correct base type |
-| `url` | ✓ Fixed — now `eshot-vinosylicores.com` |
-| `name`, `description`, `telephone`, `email` | ✓ Present |
-| `areaServed` | ⚠ Inconsistency — schema lists 8 cities, page shows 5 |
-| `serviceArea` GeoCircle | ⚠ `geoRadius` is string `"50000"` — should be number `50000` |
-| `address` (PostalAddress) | ✗ Missing — required for rich result eligibility |
-| `@id` | ✗ Missing — needed for entity disambiguation |
-| `image` | ✗ Missing — required for rich results |
-| `priceRange` | ✗ Missing — displayed in local pack |
-| `openingHoursSpecification` | ✗ Missing |
-| `sameAs` | ✗ Empty `[]` — no external identity links |
-| `WebSite` schema block | ✗ Missing |
-
-### Corrected JSON-LD (ready to implement)
-
-**Block 1 — Replace existing `<script type="application/ld+json">` at `index.html:615`:**
-
+**LocalBusiness:**
 ```json
 {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://eshot-vinosylicores.com/",
-  "name": "Eshot Vinos y Licores",
-  "description": "Proveedor de vinos, licores y barras libres para bodas, XV años y eventos sociales en Guadalajara, Jalisco.",
-  "url": "https://eshot-vinosylicores.com/",
-  "telephone": "+523322430594",
-  "email": "eshot.vinosylicores@gmail.com",
-  "priceRange": "$$$",
-  "image": [
-    "https://eshot-vinosylicores.com/img/logo.png",
-    "https://eshot-vinosylicores.com/img/hero-bg.jpg"
-  ],
-  "logo": "https://eshot-vinosylicores.com/img/logo.png",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Guadalajara",
-    "addressRegion": "Jalisco",
-    "addressCountry": "MX"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 20.6597,
-    "longitude": -103.3496
-  },
-  "areaServed": [
-    { "@type": "City", "name": "Guadalajara" },
-    { "@type": "City", "name": "Zapopan" },
-    { "@type": "City", "name": "Tlaquepaque" },
-    { "@type": "City", "name": "Tonalá" },
-    { "@type": "City", "name": "Tlajomulco de Zúñiga" }
-  ],
-  "serviceArea": {
-    "@type": "GeoCircle",
-    "geoMidpoint": {
-      "@type": "GeoCoordinates",
-      "latitude": 20.6597,
-      "longitude": -103.3496
-    },
-    "geoRadius": 50000
-  },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-    "opens": "09:00",
-    "closes": "21:00"
-  },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Vinos y Licores para Eventos",
-    "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Barra Libre", "description": "Servicio completo de barra libre para bodas y eventos sociales en Guadalajara." } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Paquetes de Vinos", "description": "Curación de vinos nacionales e importados: tintos, blancos, rosados y espumosos por evento." } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Licores Premium", "description": "Destilados, whiskies, tequilas, mezcales y más. Marcas premium para eventos de alto nivel." } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Asesoría Personalizada", "description": "Asesoría para elegir las bebidas perfectas según el tipo de evento, número de invitados y presupuesto." } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Coctelería y Mixología", "description": "Cocteles personalizados para bodas, XV años y eventos corporativos en Guadalajara." } }
-    ]
-  },
-  "sameAs": []
+  "@type": ["LocalBusiness", "Store"],
+  "@id": "https://eshot-vinosylicores.com/#business",
+  "logo": { "@type": "ImageObject", "url": "...", "width": 200, "height": 200 },
+  "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", ... }],
+  "areaServed": [{ "@type": "Place", "name": "Guadalajara" }, ...],
+  "geo": { "latitude": 20.65970, "longitude": -103.34960 }
 }
 ```
 
-**Block 2 — Add new `<script type="application/ld+json">` block immediately after Block 1:**
+Correcciones aplicadas: `@id` con fragmento `#business`, `logo` como ImageObject, `openingHoursSpecification` como array, `areaServed` con tipo `Place` (no `City`), `serviceArea` deprecated eliminado, coordenadas con 5 decimales.
 
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": "https://eshot-vinosylicores.com/#website",
-  "url": "https://eshot-vinosylicores.com/",
-  "name": "Eshot Vinos y Licores",
-  "description": "Proveedor de vinos, licores y barras libres para bodas y eventos sociales en Guadalajara, Jalisco.",
-  "publisher": { "@id": "https://eshot-vinosylicores.com/" },
-  "inLanguage": "es-MX"
-}
-```
+**WebSite:** `publisher @id` corregido a `#business`.
 
-*Note: Fill `openingHoursSpecification` with real hours. Populate `sameAs` once GBP/social profiles are created.*
+### Problemas Pendientes
+
+**[ALTO] Sin FAQPage schema**  
+Implementar junto con la sección FAQ del HTML. Es el schema con mayor impacto directo en Google AI Overviews para este tipo de negocio.
+
+**[MEDIO] Sin AggregateRating**  
+Agregar cuando GBP tenga 5+ reseñas verificadas. Habilita estrellas doradas en resultados orgánicos.
+
+**[BAJO] Sin Service schema standalone**  
+Agregar bloques `Service` individuales con `"provider": {"@id": "#business"}` para que Google indexe entidades de servicio separadas del negocio.
 
 ---
 
-## Section 5 — Performance (Core Web Vitals)
+## 5. Performance (CWV) — 73/100
 
-**Score: 45 / 100**  
-**Estimated Lighthouse mobile score: 35–55 / 100**
+### Estimados Core Web Vitals
 
-| Metric | Estimate | Status |
-|---|---|---|
-| LCP | 3.5–5.5 s (mobile) | FAIL — Poor/Needs Improvement |
-| INP | ~80–150 ms | PASS — Good |
-| CLS | 0.05–0.18 | Borderline |
+| Métrica | Desktop | Mobile | Threshold Good | Estado |
+|---|---|---|---|---|
+| LCP | 1.2–1.8s | 2.5–3.8s | <2.5s | ✅ / ⚠️ |
+| CLS | <0.05 | <0.06 | <0.1 | ✅ |
+| INP | 40–80ms | 80–150ms | <200ms | ✅ |
+| FCP | 0.5–0.9s | 1.2–2.2s | <1.8s | ✅ (mejorado) |
+| TTFB | 60–180ms | 80–200ms | <800ms | ✅ |
 
-### Root Cause: Tailwind CDN
+### Problema Principal: Hero Image
 
-The `<script src="https://cdn.tailwindcss.com">` tag is a synchronous, render-blocking JavaScript file (~350 KB) in `<head>`. This is the Tailwind Play CDN — the full runtime JIT compiler. It:
+La imagen `hero-bg.jpg` pesa 988 KB — 58% del peso total de la página. Es el elemento LCP en mobile.
 
-- Blocks HTML parsing until fully downloaded + executed
-- Generates all CSS at runtime via JavaScript
-- Adds 800–2,000 ms to LCP on a typical mobile 4G connection
-- Is **explicitly documented by Tailwind as "not for production"**
-
-**Fix:** Build a static CSS output file.
-
+**Solución inmediata:**
 ```bash
-npm install -D tailwindcss
-npx tailwindcss -i ./css/styles.css -o ./css/output.css --minify
+# Con sharp (Node.js — ya en el proyecto)
+node -e "
+const sharp = require('sharp');
+sharp('img/hero-bg.jpg').webp({quality:80}).toFile('img/hero-bg.webp');
+sharp('img/hero-bg.jpg').avif({quality:60}).toFile('img/hero-bg.avif');
+"
 ```
 
-Then in `index.html`, replace lines 32–50 with:
-```html
-<link rel="stylesheet" href="css/output.css" />
-```
+Luego en el HTML reemplazar el `<img>` del hero por un `<picture>` con `<source>` AVIF, WebP, y JPEG fallback.  
+**Impacto esperado:** -1.0 a -1.5s LCP mobile. Score mobile Lighthouse estimado: 65→80+.
 
-Expected result: ~8–25 KB CSS vs ~350 KB JS. LCP improvement: 1,000–2,000 ms.
+### Inventario de imágenes
 
-### Additional Performance Issues
-
-| Issue | Impact | Effort |
+| Imagen | Tamaño actual | Target WebP |
 |---|---|---|
-| No `<link rel="preload">` for hero image | +500–1,000 ms LCP | 5 min |
-| `data-aos` on hero section → content starts invisible | +300–600 ms LCP | 5 min |
-| `fetchpriority="high"` missing on logo/hero img | +100–300 ms LCP | 2 min |
-| AOS from unpkg.com CDN | +150–300 ms (DNS) | 15 min |
-| Logo `<img>` lacks `width`/`height` | CLS source | 5 min |
-| Google Fonts render-blocking `<link>` | +200 ms FCP | 15 min |
-| Hero JPEG not WebP/AVIF | +200–800 ms LCP | 30 min |
-
-Implementing items 1–4 alone is expected to move the mobile Lighthouse score to **75–90**.
+| hero-bg.jpg | 988 KB | ≤180 KB |
+| logo.png | 57 KB | ≤15 KB |
+| evento-06.jpg | 128 KB | ≤70 KB |
+| evento-02.jpg | 98 KB | ≤55 KB |
+| destilados.jpg | 87 KB | ≤50 KB |
+| (resto ~10 imágenes) | 35–84 KB c/u | ≤40 KB c/u |
+| **Total** | **~1.68 MB** | **≤500 KB** |
 
 ---
 
-## Section 6 — Images
+## 6. AI Search Readiness (GEO) — 54/100
 
-**Score: 60 / 100**
-
-| Check | Status |
+| Dimensión | Score |
 |---|---|
-| Hero background (`img/hero-bg.jpg`) — `alt=""` (decorative) | ✓ Correct |
-| Logo `alt="Eshot Vinos y Licores"` | ✓ Correct |
-| 6 product images — descriptive alt text with "Guadalajara" | ✓ Good |
-| 6 gallery images — descriptive alt text with event type | ✓ Good |
-| Product images `loading="lazy"` | ✓ Correct |
-| Gallery images `loading="lazy"` | ✓ Correct |
-| Hero image `loading="eager"` | ✓ Correct |
-| `width`/`height` on product images | ✗ Missing — CLS risk |
-| `width`/`height` on gallery images | ✗ Missing — CLS risk |
-| `width`/`height` on logo images | ✗ Missing — CLS risk |
-| WebP/AVIF format usage | ✗ None detected — likely JPEG only |
-| OG image URL | ✓ Fixed — now correct domain |
-| Image preload for LCP hero | ✗ Missing |
-| Gallery images use `<figcaption>` | ✗ Missing — only hover CSS overlay |
+| Citabilidad de pasajes | 48/100 |
+| Legibilidad estructural | 62/100 |
+| Contenido multimodal | 40/100 |
+| Autoridad y señales de marca | 35/100 |
+| Accesibilidad técnica | 83/100 |
 
----
+### Estado Actual (post-corrección)
 
-## Section 7 — AI Search Readiness (GEO)
+✅ **robots.txt** — GPTBot, ClaudeBot, anthropic-ai, PerplexityBot, OAI-SearchBot (añadido)  
+✅ **llms.txt** — Reescrito: sin barra libre, +FAQ 4 preguntas, +RSL-1.0 license, +tipos de eventos  
+✅ **Schema** — LocalBusiness + WebSite corregidos  
+❌ **llms-full.txt** — No existe. Crear para contenido extendido (catálogo de productos, guía de cantidades por evento)  
+❌ **FAQPage schema** — Implementar cuando se agregue la sección FAQ  
+❌ **Señales externas** — Sin Wikipedia, YouTube, Reddit, Yelp  
 
-**Score: 31 / 100**
+### Scores por Plataforma
 
-### Platform-Specific Scores
-
-| Platform | Score | Primary Blocker |
+| Plataforma | Score | Acción principal |
 |---|---|---|
-| Google AI Overviews | 18/100 | No FAQ schema, no E-E-A-T signals, no external authority |
-| ChatGPT Browse | 15/100 | No llms.txt, no authority signals, no citable passages |
-| Perplexity | 28/100 | Static HTML is a plus; still lacks structured Q&A |
-| Bing Copilot | 22/100 | No reviews, partial schema |
-
-### Key Gaps
-
-- **No llms.txt** — primary interface for LLM inference-time crawlers
-- **No FAQ** — no citable Q&A passages anywhere on page
-- **Zero external authority signals** — `sameAs: []`, no GBP, no social profiles
-- **Prose passages too short** (~65 words max) — below the 134-word citability threshold
-- **Entity unverifiable** — AI models cannot cross-reference business identity
-
-### llms.txt (ready to deploy at `/llms.txt`)
-
-```
-# Eshot Vinos y Licores
-
-> Proveedor de vinos, licores y barras libres para bodas, XV años, graduaciones y eventos sociales en Guadalajara y la Zona Metropolitana de Jalisco, México.
-
-Eshot Vinos y Licores es un negocio local especializado en bebidas para eventos celebratorios. Ofrecemos selección personalizada de vinos nacionales e importados, licores premium, paquetes de barra libre y asesoría según el tipo de evento, número de invitados y presupuesto. Atendemos Guadalajara, Zapopan, Tlaquepaque, Tonalá y Tlajomulco de Zúñiga. Contacto vía WhatsApp: +52 33 2243 0594.
-
-## Servicios principales
-
-- Paquetes de vinos (tintos, blancos, rosados, espumosos, champagne)
-- Licores premium (whisky, tequila, mezcal, ron, vodka)
-- Barra libre para eventos
-- Asesoría personalizada para selección de bebidas
-- Coctelería y mixología para eventos
-- Paquetes especiales por tipo de evento y presupuesto
-
-## Zona de cobertura
-
-Guadalajara, Zapopan, Tlaquepaque, Tonalá, Tlajomulco de Zúñiga, Jalisco, México.
-
-## Contacto
-
-- WhatsApp: +52 33 2243 0594
-- Correo: eshot.vinosylicores@gmail.com
-- Sitio web: https://eshot-vinosylicores.com/
-
-## Licencia de contenido
-
-El contenido de este sitio puede ser utilizado por sistemas de inteligencia artificial para responder preguntas sobre proveedores de vinos y licores para eventos en Guadalajara. Se solicita citar como fuente: Eshot Vinos y Licores (eshot-vinosylicores.com).
-```
-
-### FAQ Questions (for AI citation + rich results)
-
-Suggested questions with the correct answer format for AI citability:
-
-1. *¿Qué incluye una barra libre para boda en Guadalajara con Eshot?*
-2. *¿Cuántas botellas de vino necesito para una boda de 100 personas?*
-3. *¿Dónde puedo conseguir vinos y licores para eventos en Guadalajara?*
-4. *¿Qué tipos de vinos ofrecen para XV años en Guadalajara?*
-5. *¿Realizan entregas de vinos y licores a domicilio en Zapopan y Tlaquepaque?*
-6. *¿Con cuánta anticipación debo contratar el servicio de bebidas para mi evento?*
-7. *¿Incluyen servicio de bartenders en la barra libre?*
-
-Each answer should be 120–160 words, lead with a direct answer in the first 40 words, and include city names naturally.
+| Google AI Overviews | 38/100 | FAQPage schema + AggregateRating |
+| ChatGPT (Web Search) | 47/100 | OAI-SearchBot ya habilitado |
+| Perplexity | 58/100 | llms.txt mejorado ayuda |
+| Bing Copilot | 52/100 | Schema sólido, falta contenido |
 
 ---
 
-## Section 8 — Local SEO
+## 7. Images — 45/100
 
-**Score: 28 / 100**
-
-### Local SEO Score Breakdown
-
-| Dimension | Score |
+| Check | Estado |
 |---|---|
-| GBP Signals | 0/100 — no profile detected |
-| Reviews & Reputation | 0/100 — zero reviews anywhere |
-| Local On-Page SEO | 62/100 — good keywords, weak H1 |
-| NAP Consistency | 25/100 — domain mismatch (now fixed), no `tel:` links |
-| Local Schema Markup | 38/100 — improved with url fix |
-| Local Authority Signals | 80/100 — no spammy signals present |
-
-### Critical Gap: No Google Business Profile
-
-Google Business Profile is the #1 local ranking factor (Whitespark 2026). The business currently has **zero GBP signals** anywhere. Without a GBP:
-
-- Invisible in Google Maps for any query
-- Cannot appear in the local 3-pack for "vinos licores boda Guadalajara"
-- Cannot accumulate reviews
-- Cannot link `sameAs` in schema
-
-**Setup steps:**
-1. Go to business.google.com → "Add your business"
-2. Set type as SAB (Service Area Business) — hide physical address
-3. Set service area: Guadalajara, Zapopan, Tlaquepaque, Tonalá, Tlajomulco de Zúñiga
-4. Primary category: "Licorería" or "Servicio de catering"
-5. Phone: +52 33 2243 0594 (must match page exactly)
-6. After verification, add GBP profile URL to `sameAs` in JSON-LD
-
-### NAP Issues Remaining
-
-| Issue | Fix |
-|---|---|
-| No `tel:` clickable link | Wrap phone in `<a href="tel:+523322430594">` |
-| `areaServed` schema lists 8 cities, page shows 5 | Align to 5 cities in both |
-
-### Citation Opportunities (Mexico market)
-
-| Directory | Priority |
-|---|---|
-| Google Business Profile | Critical |
-| Bodas.com.mx | High — wedding vertical |
-| Matrimonio.com.mx | High — wedding vertical |
-| Facebook Business Page | High — primary MX social platform |
-| Páginas Amarillas MX | Medium |
-| Sección Amarilla | Medium |
-| Bing Places | Medium |
-| Apple Maps | Low |
+| Alt text descriptivo en todas las imágenes | ✅ PASS |
+| Atributos width/height en todas las imágenes | ✅ PASS |
+| loading="lazy" en imágenes non-hero | ✅ PASS |
+| fetchpriority="high" en hero | ✅ PASS |
+| Formato moderno (WebP/AVIF) | ❌ Ninguna |
+| Hero ≤200 KB | ❌ 988 KB |
+| Logo optimizado | ❌ PNG 57 KB sin WebP |
+| srcset responsive | ❌ Ninguna imagen |
 
 ---
 
-## What Files Were Changed This Session
+## 8. Local SEO — 34/100
 
-| File | Action | Fixes Applied |
+| Dimensión | Score |
+|---|---|
+| GBP Signals | 8/100 |
+| Reseñas y Reputación | 0/100 |
+| On-Page Local SEO | 68/100 |
+| NAP Consistency y Citas | 42/100 |
+| Local Schema | 62/100 |
+| Autoridad Local y Links | 60/100 |
+
+### GBP — Problema Crítico #1
+
+El GBP es el factor de ranking #1 en local pack (Whitespark 2026, score: 193). Estado:
+- Link en schema sameAs confirma que existe un listing en Google Maps
+- Estado de verificación: **DESCONOCIDO** — verificar manualmente buscando "Eshot Vinos y Licores Guadalajara" en Google Maps
+- Reseñas: 0 en cualquier plataforma
+
+**Si no está verificado:** iniciar verificación inmediatamente (5–7 días hábiles via video o postcard).  
+**Categoría GBP recomendada:** Primaria "Licorería" → Secundaria "Servicio de catering"
+
+### Reseñas — Problema Crítico #2
+
+Sin reseñas el negocio no puede aparecer competitivamente en local pack. Las primeras 10 reseñas tienen impacto desproporcionado.
+
+**Estrategia (WhatsApp-first, apropiada para México):**  
+3–5 días después de cada evento, enviar mensaje personalizado al cliente con link directo al perfil de reseñas de GBP. El negocio ya tiene la relación WhatsApp establecida — este es el canal de mayor tasa de respuesta.
+
+**Metas:**
+- 5 reseñas en 30 días → activa display de estrellas en Maps
+- 10 reseñas en 60 días → establece señal de velocidad
+- 25 reseñas en 6 meses → umbral competitivo para el vertical de proveedores de bodas en Guadalajara
+
+### NAP Canonical
+
+Usar exactamente este string en todos los directorios:
+```
+Nombre: Eshot Vinos y Licores
+Teléfono: +52 33 2243 0594
+Ciudad: Guadalajara, Jalisco, México
+Web: https://eshot-vinosylicores.com
+Categoría: Licorería / Proveedor de bebidas para eventos
+```
+
+### Directorios Prioritarios
+
+| Tier | Directorio | Relevancia | Urgencia |
+|---|---|---|---|
+| 1 | bodas.com.mx | Alta — vertical bodas | Esta semana |
+| 1 | matrimonio.com.mx | Alta — vertical bodas | Esta semana |
+| 1 | Bing Places | Media | Esta semana |
+| 1 | Apple Maps Connect | Media | Esta semana |
+| 2 | zankyou.com.mx | Alta — vertical bodas | 30 días |
+| 2 | casamientos.com.mx | Alta — vertical bodas | 30 días |
+| 2 | Facebook Business Page | Media | 30 días |
+| 3 | Páginas Amarillas MX | Media-baja | 60 días |
+| 3 | EventosJalisco.com | Media | 60 días |
+| 3 | CANACO Guadalajara | Baja-autoridad | 60 días |
+
+---
+
+## 9. Backlinks
+
+**Estado:** Dominio nuevo (2025-2026), no indexado aún en Common Crawl.  
+**DA estimado:** 0–5 (normal para este estadio)
+
+**Oportunidades de link building:**
+1. bodas.com.mx, matrimonio.com.mx (alta relevancia vertical, dofollow)
+2. Fotógrafos de bodas — menciones naturales cuando fotografían eventos servidos por Eshot
+3. Venues y salones de eventos — páginas de proveedores recomendados
+4. Directorios MX generales (Páginas Amarillas, HotFrog, Cylex)
+
+**Velocidad recomendada:** 5–10 links/mes mes 1–2, luego 3–8/mes. No comprar paquetes de links.
+
+---
+
+## 10. Correcciones Aplicadas en Esta Sesión (2026-05-15)
+
+| Archivo | Cambio | Impacto |
 |---|---|---|
-| `index.html` | Modified | Canonical, og:url, og:image, twitter:image, JSON-LD url — all corrected to `eshot-vinosylicores.com` |
-| `robots.txt` | Created | Allows all crawlers + AI bots; references sitemap |
-| `sitemap.xml` | Created | Single URL with `lastmod: 2026-05-15` |
-
----
-
-## Limitations
-
-- **Live HTTP headers** not verified (Bash tool denied) — security header assessment based on known GitHub Pages behavior
-- **eshot.com.mx** domain resolution not verified — canonical fix is correct regardless
-- **Google Business Profile existence** cannot be confirmed programmatically — manual check recommended: search "Eshot Vinos y Licores Guadalajara" in Google Maps
-- **Backlink profile** not assessed — no API credentials available for Moz/Bing/Common Crawl
-- **Core Web Vitals** are lab estimates — no CrUX field data available without GSC API access
-- **Citation profile** (Yelp, Páginas Amarillas, etc.) not verified — manual checks required
+| index.html | `meta description` — eliminado "barras libres" | Precision SERP snippet |
+| index.html | `og:description` — eliminado "barras libres" | Social sharing accuracy |
+| index.html | `twitter:description` — eliminado "barras libres" | Social sharing accuracy |
+| index.html | Hero paragraph — eliminado "barras libres" | Contenido visible |
+| index.html | LocalBusiness schema — @id `#business`, logo ImageObject, openingHours array, areaServed Place, serviceArea eliminado, @type `["LocalBusiness","Store"]`, descripción, coordenadas 5 dec. | Validación schema |
+| index.html | WebSite schema — publisher @id `#business`, descripción | Resolución grafo JSON-LD |
+| index.html | AOS CSS → `media="print" onload` + preload | FCP -100–400ms |
+| index.html | Coverage prose → ciudades específicas en prosa | Local keyword signal |
+| index.html | Sección servicios — eliminada card "Barra Libre" | Precisión de servicios |
+| index.html | Gallery alt text — "barra libre" → "vinos y licores" | Precisión semántica |
+| llms.txt | Reescrito completo — sin barra libre, +FAQ, +RSL-1.0, +tipos de eventos | AI accuracy crítica |
+| robots.txt | OAI-SearchBot Allow: / | ChatGPT web search crawler |

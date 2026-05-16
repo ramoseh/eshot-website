@@ -6,21 +6,21 @@
   <link rel="preload" as="image" href="img/hero-bg.jpg" fetchpriority="high" />
   <meta name="theme-color" content="#000000" />
   <title>Eshot — Vinos y Licores para Bodas y Eventos en Guadalajara</title>
-  <meta name="description" content="Eshot ofrece vinos, licores y barras libres para bodas, XV años y eventos sociales en Guadalajara. Cotiza tu paquete por WhatsApp: +52 33 2243 0594." />
+  <meta name="description" content="Eshot ofrece vinos y licores para bodas, XV años y eventos sociales en Guadalajara. Selección personalizada, asesoría y entrega. Cotiza por WhatsApp: +52 33 2243 0594." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://eshot-vinosylicores.com/" />
 
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://eshot-vinosylicores.com/" />
   <meta property="og:title"       content="Eshot — Vinos y Licores para Bodas y Eventos en Guadalajara" />
-  <meta property="og:description" content="Vinos, licores y barras libres para bodas, XV años y eventos sociales en Guadalajara. Cotiza sin compromiso." />
+  <meta property="og:description" content="Vinos y licores para bodas, XV años y eventos sociales en Guadalajara. Selección personalizada y asesoría. Cotiza sin compromiso." />
   <meta property="og:image"       content="https://eshot-vinosylicores.com/img/hero-bg.jpg" />
   <meta property="og:locale"      content="es_MX" />
   <meta property="og:site_name"   content="Eshot Vinos y Licores" />
 
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="Eshot — Vinos y Licores para Bodas y Eventos en Guadalajara" />
-  <meta name="twitter:description" content="Vinos, licores y barras libres para bodas y eventos en Guadalajara." />
+  <meta name="twitter:description" content="Vinos y licores para bodas y eventos en Guadalajara. Asesoría personalizada y entrega." />
   <meta name="twitter:image"       content="https://eshot-vinosylicores.com/img/hero-bg.jpg" />
   <link rel="icon" type="image/png" href="img/logo.png" />
 
@@ -35,9 +35,11 @@
   <!-- Tailwind CSS (build local — 15 KB vs 350 KB CDN) -->
   <link rel="stylesheet" href="css/output.css" />
 
-  <!-- AOS -->
+  <!-- AOS — non-render-blocking -->
   <link rel="preconnect" href="https://unpkg.com" />
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="preload" href="https://unpkg.com/aos@2.3.4/dist/aos.css" as="style" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" /></noscript>
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/styles.css" />
@@ -111,8 +113,8 @@
       </h1>
 
       <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-        Vinos, licores y barras libres para bodas, XV años y eventos sociales en Guadalajara.
-        Cotiza tu paquete sin compromiso.
+        Vinos y licores para bodas, XV años y eventos sociales en Guadalajara.
+        Selección personalizada y asesoría. Cotiza sin compromiso.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -461,8 +463,9 @@
         Llegamos a tu evento en Guadalajara
       </h2>
       <p class="text-gray-300 text-lg leading-relaxed mb-8">
-        Damos servicio en Guadalajara y la Zona Metropolitana de Jalisco. Si tu evento es fuera del área,
-        contáctanos y buscamos la forma de llegar.
+        Damos servicio en Guadalajara, Zapopan, Tlaquepaque, Tonalá y Tlajomulco de Zúñiga.
+        Si necesitas vinos y licores para tu boda en Zapopan o un paquete para un evento en Tlaquepaque,
+        contáctanos — llegamos a toda la Zona Metropolitana de Jalisco.
       </p>
 
       <ul class="grid grid-cols-2 gap-3 mb-8">
@@ -602,10 +605,10 @@
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://eshot-vinosylicores.com/",
+  "@type": ["LocalBusiness", "Store"],
+  "@id": "https://eshot-vinosylicores.com/#business",
   "name": "Eshot Vinos y Licores",
-  "description": "Proveedor de vinos, licores y barras libres para bodas, XV años y eventos sociales en Guadalajara, Jalisco.",
+  "description": "Proveedor de vinos y licores para bodas, XV años y eventos sociales en Guadalajara, Jalisco. Paquetes personalizados de vinos nacionales e importados, licores premium y asesoría para tu evento.",
   "url": "https://eshot-vinosylicores.com/",
   "telephone": "+523322430594",
   "email": "eshot.vinosylicores@gmail.com",
@@ -614,7 +617,12 @@
     "https://eshot-vinosylicores.com/img/logo.png",
     "https://eshot-vinosylicores.com/img/hero-bg.jpg"
   ],
-  "logo": "https://eshot-vinosylicores.com/img/logo.png",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://eshot-vinosylicores.com/img/logo.png",
+    "width": 200,
+    "height": 200
+  },
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Guadalajara",
@@ -623,38 +631,30 @@
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 20.6597,
-    "longitude": -103.3496
+    "latitude": 20.65970,
+    "longitude": -103.34960
   },
   "areaServed": [
-    { "@type": "City", "name": "Guadalajara" },
-    { "@type": "City", "name": "Zapopan" },
-    { "@type": "City", "name": "Tlaquepaque" },
-    { "@type": "City", "name": "Tonalá" },
-    { "@type": "City", "name": "Tlajomulco de Zúñiga" }
+    { "@type": "Place", "name": "Guadalajara" },
+    { "@type": "Place", "name": "Zapopan" },
+    { "@type": "Place", "name": "Tlaquepaque" },
+    { "@type": "Place", "name": "Tonalá" },
+    { "@type": "Place", "name": "Tlajomulco de Zúñiga" }
   ],
-  "serviceArea": {
-    "@type": "GeoCircle",
-    "geoMidpoint": {
-      "@type": "GeoCoordinates",
-      "latitude": 20.6597,
-      "longitude": -103.3496
-    },
-    "geoRadius": 50000
-  },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-    "opens": "09:00",
-    "closes": "21:00"
-  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "09:00",
+      "closes": "21:00"
+    }
+  ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Vinos y Licores para Eventos",
     "itemListElement": [
-
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Paquetes de Vinos", "description": "Curación de vinos nacionales e importados: tintos, blancos, rosados y espumosos por evento." } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Licores Premium", "description": "Destilados, whiskies, tequilas, mezcales y más. Marcas premium para eventos de alto nivel." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Paquetes de Vinos", "description": "Curación de vinos nacionales e importados: tintos, blancos, rosados y espumosos para tu evento en Guadalajara." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Licores Premium", "description": "Destilados, whiskies, tequilas, mezcales y más. Marcas premium para eventos de alto nivel en Guadalajara." } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Asesoría Personalizada", "description": "Asesoría para elegir las bebidas perfectas según el tipo de evento, número de invitados y presupuesto." } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Coctelería y Mixología", "description": "Cocteles personalizados para bodas, XV años y eventos corporativos en Guadalajara." } }
     ]
@@ -672,8 +672,8 @@
   "@id": "https://eshot-vinosylicores.com/#website",
   "url": "https://eshot-vinosylicores.com/",
   "name": "Eshot Vinos y Licores",
-  "description": "Proveedor de vinos, licores y barras libres para bodas y eventos sociales en Guadalajara, Jalisco.",
-  "publisher": { "@id": "https://eshot-vinosylicores.com/" },
+  "description": "Proveedor de vinos y licores para bodas y eventos sociales en Guadalajara, Jalisco.",
+  "publisher": { "@id": "https://eshot-vinosylicores.com/#business" },
   "inLanguage": "es-MX"
 }
 </script>

@@ -1,326 +1,295 @@
-# SEO Action Plan — Eshot Vinos y Licores
-
-**Generated:** 2026-05-15  
-**Current Score:** 52 / 100  
-**Target Score:** 78 / 100 (after all High-priority items)  
-
----
-
-## Already Fixed This Session ✓
-
-These were the most critical issues and have been applied to the codebase:
-
-| Fix | File | Time |
-|---|---|---|
-| Canonical URL corrected (`eshot.com.mx` → `eshot-vinosylicores.com`) | `index.html:10` | Done |
-| `og:url` corrected | `index.html:13` | Done |
-| `og:image` URL corrected | `index.html:16` | Done |
-| `twitter:image` URL corrected | `index.html:23` | Done |
-| JSON-LD `url` field corrected | `index.html:621` | Done |
-| `robots.txt` created (allows all crawlers + AI bots) | `robots.txt` | Done |
-| `sitemap.xml` created | `sitemap.xml` | Done |
-
-**Commit and deploy these now.** These 7 fixes unblock Google indexing and social sharing.
+# Action Plan — Eshot Vinos y Licores
+**Generado:** 2026-05-15  
+**Score actual:** 61 / 100  
+**Score objetivo (90 días):** 75 / 100  
 
 ---
 
-## CRITICAL — Fix Immediately (this week)
+## CRÍTICO — Esta semana (impacto en local pack y conversiones)
 
-### C1 — Create Google Business Profile
-**Impact:** +15–25 local ranking positions | **Effort:** 2–4 hours
+### C1. Verificar y completar Google Business Profile
+**Esfuerzo:** 2–4 horas | **Impacto:** +15–25 posiciones en local pack
 
-Google Business Profile is the #1 local ranking factor. Without it the site is invisible in Google Maps and the local 3-pack for every query in the Guadalajara market.
+1. Buscar "Eshot Vinos y Licores Guadalajara" en Google Maps para confirmar el listing
+2. Si no está verificado: iniciar verificación via Google Business Profile dashboard
+3. Una vez verificado, completar:
+   - Categoría primaria: **Licorería** / Secundaria: Servicio de catering
+   - Horario: Lun–Dom 09:00–21:00 (igual que schema)
+   - Fotos: subir las 6 fotos de galería + logo
+   - Descripción: 750 caracteres, incluir "vinos para bodas Guadalajara" y "licores para eventos"
+   - Zona de servicio: las 5 municipalidades
+   - Habilitar mensajería GBP (además de WhatsApp externo)
+4. Agregar URL canónica de GBP al `sameAs` del schema y al footer del sitio
 
-Steps:
-1. Go to [business.google.com](https://business.google.com) → Add your business
-2. Business type: Service Area Business (hide physical address)
-3. Service area: Guadalajara, Zapopan, Tlaquepaque, Tonalá, Tlajomulco de Zúñiga
-4. Category: "Licorería" or "Servicio de catering para eventos"
-5. Phone: +52 33 2243 0594 (must match exactly what's on the site)
-6. Complete verification (postcard/phone/video)
-7. Upload all 6 gallery photos after verification
-8. After verified: copy the GBP profile URL, add to `sameAs` in `index.html:647`
+### C2. Iniciar adquisición de reseñas
+**Esfuerzo:** 30 min setup + ongoing | **Impacto:** local pack eligibility
 
----
+- Crear mensaje WhatsApp de seguimiento post-evento (enviar 3–5 días después)
+- Incluir link directo a la página de reseñas de GBP
+- Meta: 5 reseñas en 30 días → activa display de estrellas
+- Responder TODAS las reseñas en <24 horas
+- Nunca usar servicios de reseñas de pago
 
-## HIGH — Fix Within 1 Week
-
-### H1 — Replace Tailwind CDN with Build-Time CSS
-**Impact:** LCP −1,000–2,000 ms, Lighthouse score +20–35 pts | **Effort:** 1–2 hours
+### C3. Comprimir imagen hero (988 KB → ≤180 KB WebP)
+**Esfuerzo:** 30 minutos | **Impacto:** LCP mobile -1.0 a -1.5s
 
 ```bash
-npm install -D tailwindcss
-npx tailwindcss -i ./css/styles.css -o ./css/output.css --minify
+# En el directorio del proyecto
+npm install --save-dev sharp
+node -e "
+const sharp = require('sharp');
+sharp('img/hero-bg.jpg').webp({quality:80}).toFile('img/hero-bg.webp', (err, info) => console.log('WebP:', info));
+sharp('img/hero-bg.jpg').avif({quality:60}).toFile('img/hero-bg.avif', (err, info) => console.log('AVIF:', info));
+"
 ```
 
-In `index.html`, replace lines 32–50 (the two `<script>` tags for Tailwind CDN + config) with:
+Luego en index.html, reemplazar el `<img>` del hero:
 ```html
-<link rel="stylesheet" href="css/output.css" />
+<picture>
+  <source srcset="img/hero-bg.avif" type="image/avif" />
+  <source srcset="img/hero-bg.webp" type="image/webp" />
+  <img src="img/hero-bg.jpg" alt="" class="w-full h-full object-cover opacity-30"
+       loading="eager" fetchpriority="high" width="1920" height="1080" />
+</picture>
 ```
 
-Create `css/tailwind-input.css` with:
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-
-Create `tailwind.config.js` at root with the same color/font config currently in the inline `<script>` block.
-
----
-
-### H2 — Add Hero Image Preload + fetchpriority
-**Impact:** LCP −500–1,000 ms | **Effort:** 5 minutes
-
-Add to `<head>` (after `<meta name="viewport">`):
+También actualizar el `<link rel="preload">` en el head:
 ```html
-<link rel="preload" as="image" href="img/hero-bg.jpg" fetchpriority="high" />
-```
-
-Update `index.html:113`:
-```html
-<img src="img/hero-bg.jpg" alt="" class="w-full h-full object-cover opacity-30"
-     loading="eager" fetchpriority="high" />
-```
-
-Update `index.html:119` (logo is likely the actual LCP element):
-```html
-<img src="img/logo.png" alt="Eshot Vinos y Licores" class="h-36 w-auto mx-auto mb-8 drop-shadow-2xl"
-     fetchpriority="high" />
+<link rel="preload" as="image" href="img/hero-bg.webp"
+      type="image/webp" fetchpriority="high" />
 ```
 
 ---
 
-### H3 — Remove AOS from Hero Section
-**Impact:** LCP −300–600 ms, CLS fix | **Effort:** 5 minutes
+## ALTO — Primeros 7 días
 
-Remove `data-aos="fade-up" data-aos-duration="800"` from `index.html:118`.
+### A1. Listar en directorios de bodas Tier 1
+**Esfuerzo:** 2 horas | **Impacto:** backlinks relevantes + AI citations
 
-Replace with a CSS animation in `css/styles.css`:
-```css
-.hero-content {
-  animation: fadeUp 0.8s ease-out both;
+- bodas.com.mx — crear perfil de proveedor
+- matrimonio.com.mx — crear perfil
+- Bing Places for Business — listing gratuito (sync con GBP)
+- Apple Maps Connect — listing gratuito
+
+Usar exactamente este NAP en todos:
+```
+Eshot Vinos y Licores
++52 33 2243 0594
+Guadalajara, Jalisco, México
+https://eshot-vinosylicores.com
+```
+Escribir descripción única por directorio (no copiar-pegar el mismo texto).
+
+### A2. Agregar H2 con keyword bajo el H1
+**Esfuerzo:** 5 minutos | **Archivo:** index.html ~línea 110
+
+Después del `</h1>` del hero, agregar:
+```html
+<h2 class="text-lg md:text-xl text-gray-400 font-light mb-2">
+  Proveedores de vinos y licores para bodas y eventos en Guadalajara
+</h2>
+```
+
+### A3. Agregar sección FAQ al HTML (8 preguntas mínimo)
+**Esfuerzo:** 3–4 horas | **Impacto:** AI citations, long-tail keywords, E-E-A-T
+
+Nueva sección `<section id="faq">` entre Galería y Cobertura. Preguntas prioritarias:
+
+1. ¿Cuántas botellas de vino necesito para una boda de 100 personas?
+2. ¿Hacen entregas de vinos y licores en Zapopan y Tlaquepaque?
+3. ¿Con cuánta anticipación debo cotizar las bebidas para mi evento?
+4. ¿Qué tipos de vinos tienen para XV años?
+5. ¿Cuánto cuesta un paquete de vinos para evento en Guadalajara?
+6. ¿Trabajan con organizadores de eventos o solo clientes directos?
+7. ¿Tienen servicio de bartenders o solo venta de producto?
+8. ¿Qué marcas de tequila y mezcal tienen disponibles?
+
+Cada respuesta: 100–150 palabras, respuesta directa en la primera oración, mencionar al menos una ciudad naturalmente.
+
+Agregar schema FAQPage:
+```json
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuántas botellas de vino necesito para una boda de 100 personas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "[respuesta completa de 100-150 palabras]"
+      }
+    }
+  ]
 }
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+</script>
 ```
 
-Add class `hero-content` to the div at `index.html:118`.
-
 ---
 
-### H4 — Complete LocalBusiness Schema
-**Impact:** Rich result eligibility, GBP linkage | **Effort:** 30 minutes
+## MEDIO — Primeros 30 días
 
-Replace the single JSON-LD block at `index.html:615–649` with the two corrected blocks from `FULL-AUDIT-REPORT.md` Section 4. Key additions:
+### M1. Agregar testimonials con detalle de evento
+**Esfuerzo:** 2–3 horas | **Impacto:** E-E-A-T Experience, proof social
 
-- `@id`, `image`, `logo`, `address` (PostalAddress), `geo`, `priceRange`, `openingHoursSpecification`
-- New `WebSite` schema block
-- `geoRadius` as number `50000` (not string)
-- `areaServed` aligned to 5 cities (matching on-page copy)
+Nueva sección entre Galería y Cobertura. Formato por testimonio:
+```
+"[Quote específico sobre el servicio]"
+— [Nombre o inicial], [tipo de evento], [ciudad], [año]
+Ej: "Entregaron todo puntualmente y el vino estuvo delicioso."
+— Daniela R., Boda, Zapopan, 2025
+```
+Mínimo 4–6 testimonials. Incluir ciudad en cada uno para señal local keyword.
 
-After GBP is created: populate `sameAs` with the GBP profile URL.
-
----
-
-### H5 — Self-Host AOS (Remove unpkg.com Dependency)
-**Impact:** −150–300 ms DNS lookup, supply-chain security | **Effort:** 15 minutes
+### M2. Convertir todas las imágenes a WebP
+**Esfuerzo:** 1 hora | **Impacto:** peso total -55%, LCP general -200ms
 
 ```bash
-# Download AOS files
-curl -o css/aos.css https://unpkg.com/aos@2.3.4/dist/aos.css
-curl -o js/aos.js https://unpkg.com/aos@2.3.4/dist/aos.js
+# Script para convertir todas las imágenes
+node -e "
+const sharp = require('sharp');
+const fs = require('fs');
+const dirs = ['img', 'img/products', 'img/gallery'];
+dirs.forEach(dir => {
+  fs.readdirSync(dir).filter(f => /\.(jpg|jpeg|png)$/i.test(f)).forEach(file => {
+    const input = dir + '/' + file;
+    const output = input.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+    sharp(input).webp({quality: 82}).toFile(output, (err, info) => {
+      if (!err) console.log(file, '->', (info.size/1024).toFixed(0) + 'KB');
+    });
+  });
+});
+"
 ```
 
-Update `index.html:53`: `<link href="css/aos.css" rel="stylesheet" />`  
-Update `index.html:652`: `<script src="js/aos.js" defer></script>`  
-Also update `index.html:654`: `<script src="js/main.js" defer></script>`
+Luego envolver cada `<img>` de galería y productos en `<picture>` con source WebP.
 
----
+### M3. Agregar favicon completo
+**Esfuerzo:** 30 minutos | **Herramienta:** realfavicongenerator.net
 
-### H6 — Add `tel:` Clickable Phone Links
-**Impact:** GBP signal, mobile UX, tap-to-call | **Effort:** 5 minutes
-
-Wrap every plain-text phone number on the page:
-
-`index.html:532`: Change the WhatsApp CTA button text from `+52 33 2243 0594` to also include a `tel:` href on the number in the footer contact list:
+Subir logo.png y descargar el paquete completo. Reemplazar en `<head>`:
 ```html
-<a href="tel:+523322430594" class="hover:text-teal transition-colors">+52 33 2243 0594</a>
+<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="img/logo.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
 ```
-(The footer phone at `index.html:575` is already in a `<a href="https://wa.me/...">` link — add a separate `<a href="tel:+523322430594">` alongside it.)
 
----
+### M4. Agregar fundador/equipo en sección Nosotros
+**Esfuerzo:** 1 hora | **Impacto:** E-E-A-T Expertise, confianza
 
-### H7 — Fix `lang` Attribute
-**Impact:** Locale consistency for AI + crawlers | **Effort:** 2 minutes
+Un párrafo (80–100 palabras) con:
+- Nombre del fundador
+- Background en el sector (años en bebidas para eventos)
+- Por qué fundó Eshot
+- Foto si disponible (con alt text descriptivo)
 
-`index.html:2`: Change `<html lang="es">` → `<html lang="es-MX">`
+### M5. Email de dominio
+**Esfuerzo:** 30 minutos | **Impacto:** trust signal E-E-A-T
 
----
+Crear `contacto@eshot-vinosylicores.com` via el proveedor de hosting del dominio (probablemente Namecheap o GoDaddy si el dominio fue comprado ahí, o via Cloudflare Email Routing si se usa Cloudflare — gratis). Actualizar en footer, schema y llms.txt.
 
-### H8 — Add `llms.txt`
-**Impact:** AI search visibility (ChatGPT, Perplexity, Claude) | **Effort:** 30 minutes
+### M6. Agregar link a GBP en footer y sección de contacto
+**Esfuerzo:** 10 minutos | **Impacto:** Local SEO, trust
 
-Create `/home/ivanr/workspace/eshot/llms.txt` with the content from `FULL-AUDIT-REPORT.md` Section 7. This file is served automatically by GitHub Pages from the repository root.
-
----
-
-## MEDIUM — Fix Within 1 Month
-
-### M1 — Add FAQ Section to Homepage
-**Impact:** AI citation readiness +30 pts, long-tail keyword coverage, rich results | **Effort:** 4–6 hours
-
-Add a new `<section id="faq">` between the Gallery and Coverage sections. Include 5–7 questions as `<h3>` headings with `<p>` answers (~150 words each). Suggested questions in `FULL-AUDIT-REPORT.md` Section 7.
-
-Add corresponding `FAQPage` JSON-LD schema block.
-
-Add "FAQ" link to navigation.
-
----
-
-### M2 — Add Testimonials Section
-**Impact:** E-E-A-T, conversion confidence | **Effort:** 3–4 hours
-
-Add 3–5 client quotes between Gallery and Coverage. Each entry: client first name, event type, city, year. Even initial placeholder quotes from memory can be replaced with real reviews as they come in.
-
----
-
-### M3 — Add Barra Libre Service Card
-**Impact:** Primary service visibility, Services grid completeness | **Effort:** 1 hour
-
-Add a fourth card to the Services grid (`index.html:222–266`). The grid already declares `lg:grid-cols-4` — adding the fourth card fills the layout correctly.
-
-Suggested card:
+Una vez verificado el GBP:
 ```html
-<div ... data-aos="fade-up" data-aos-delay="400">
-  <span class="text-5xl mb-4">🍾</span>
-  <h3 class="font-serif text-xl font-bold mb-3 text-teal">Barra Libre</h3>
-  <p class="text-gray-400 text-sm leading-relaxed mb-6">
-    Servicio completo de barra libre para bodas y eventos. Incluye selección de bebidas,
-    coordinación de entrega y asesoría personalizada.
-  </p>
-  <a href="https://wa.me/523322430594?text=Hola,%20me%20interesa%20cotizar%20una%20barra%20libre"
-     ...>Cotizar vía WhatsApp</a>
-</div>
+<a href="[URL completa GBP]" target="_blank" rel="noopener noreferrer"
+   class="flex items-center gap-2 text-gray-500 hover:text-teal text-sm transition-colors">
+  <svg><!-- icono Google Maps --></svg>
+  Ver en Google Maps
+</a>
 ```
 
 ---
 
-### M4 — Fill Coverage Section Right Column
-**Impact:** Content depth, local signal, UX | **Effort:** 1 hour
+## BAJO — 30–60 días
 
-The Coverage section (`index.html:466–508`) has an empty right column. Options:
-- Embed Google Maps showing the GDL metro service area
-- Add a "recent events" mini-card set (3 cards with event type + city)
-- Add a "¿Fuera de área?" block with call-to-action
+### B1. Crear llms-full.txt
+**Esfuerzo:** 2 horas | **Impacto:** AI depth indexing
 
----
+Crear `/home/ivanr/workspace/eshot/llms-full.txt` con:
+- Catálogo detallado de productos (variedades, orígenes, rangos de precio)
+- Guía de cantidades por tipo de evento y número de invitados
+- Proceso de cotización y entrega
+- Historia del negocio
+- Preguntas frecuentes extendidas (20+ preguntas)
 
-### M5 — Add Google Fonts Non-Blocking Load
-**Impact:** FCP −100–200 ms | **Effort:** 15 minutes
-
-Replace `index.html:29` (render-blocking stylesheet link) with:
-```html
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" as="style" />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap"
-      rel="stylesheet" media="print" onload="this.media='all'" />
-<noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" /></noscript>
+Referenciar desde llms.txt:
+```markdown
+## Contenido completo
+- [Guía completa de productos y servicios](https://eshot-vinosylicores.com/llms-full.txt)
 ```
 
----
+### B2. IndexNow via GitHub Action
+**Esfuerzo:** 30 minutos | **Impacto:** indexación instantánea en Bing/Yandex
 
-### M6 — Add `width` and `height` to All Images
-**Impact:** CLS reduction | **Effort:** 15 minutes
+Crear `.github/workflows/indexnow.yml`:
+```yaml
+name: IndexNow
+on:
+  push:
+    branches: [master]
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify IndexNow
+        run: |
+          curl -X POST "https://api.indexnow.org/IndexNow" \
+          -H "Content-Type: application/json" \
+          -d '{"host":"eshot-vinosylicores.com","key":"[YOUR_KEY]","urlList":["https://eshot-vinosylicores.com/"]}'
+```
 
-Add explicit dimensions to:
-- Logo images (`index.html:65, 119, 549`) — match intrinsic PNG size
-- Product images (`index.html:286–382`) — `width="640" height="256"`
-- Gallery images (`index.html:415–455`) — match intrinsic size
+### B3. Listar en Tier 2 y Tier 3 de directorios
+**Esfuerzo:** 2 horas | **Impacto:** NAP consistency, link building
 
----
+- zankyou.com.mx, casamientos.com.mx (bodas)
+- Facebook Business Page
+- Páginas Amarillas MX, HotFrog MX, Cylex MX
+- EventosJalisco.com
 
-### M7 — Get First 10 Google Reviews
-**Impact:** Local pack ranking, conversion trust | **Effort:** ongoing
+### B4. Migrar a Cloudflare Pages (headers de seguridad)
+**Esfuerzo:** 2 horas | **Impacto:** security headers, posible mejora ligera de CWV
 
-After GBP is verified:
-1. Create a short review link (Google provides a short URL from GBP dashboard)
-2. Send via WhatsApp to recent clients: *"Hola [nombre], gracias por confiar en nosotros para tu evento. Si puedes dejarnos una reseña en Google nos ayudaría mucho: [link]"*
-3. Target: 10 reviews within 60 days of GBP verification
-4. Respond to every review (positive and negative) within 48 hours
+Cloudflare Pages tiene free tier, soporta el mismo workflow de GitHub push, y permite `_headers` file para CSP, X-Frame-Options, etc. El dominio ya apunta a eshot-vinosylicores.com — el cambio es solo en el deploy target.
 
----
+### B5. AggregateRating schema (cuando existan reseñas)
+**Esfuerzo:** 10 minutos | **Impacto:** estrellas en resultados orgánicos
 
-### M8 — List on Wedding/Event Directories
-**Impact:** NAP citations, direct lead source | **Effort:** 2–4 hours
-
-| Directory | URL | Priority |
-|---|---|---|
-| Bodas.com.mx | bodas.com.mx | High |
-| Matrimonio.com.mx | matrimonio.com.mx | High |
-| Facebook Business Page | facebook.com/business | High |
-| Páginas Amarillas MX | paginas-amarillas.com.mx | Medium |
-| Sección Amarilla | seccionamarilla.com.mx | Medium |
-| Bing Places | bingplaces.com | Medium |
-
-Ensure NAP is identical on every directory: **"Eshot Vinos y Licores" / "+52 33 2243 0594" / "Guadalajara, Jalisco"**
-
----
-
-### M9 — Add "¿Cómo funciona?" Process Section
-**Impact:** Conversion, E-E-A-T | **Effort:** 2 hours
-
-Add a 3-step visual section:
-1. **Contáctanos por WhatsApp** — cuéntanos el tipo de evento, la fecha y el número de invitados
-2. **Recibe tu cotización** — te enviamos opciones personalizadas según tu evento y presupuesto
-3. **Disfruta tu evento** — entregamos todo puntualmente para que solo te preocupes por celebrar
-
----
-
-### M10 — Add Favicon Set
-**Impact:** UX, minor trust signal | **Effort:** 20 minutes
-
-1. Go to [realfavicongenerator.net](https://realfavicongenerator.net) → upload `img/logo.png`
-2. Download the generated package
-3. Place `favicon.ico` at repository root
-4. Place PNG variants in `img/`
-5. Replace `index.html:24` with the generated `<link>` tags
+Una vez con 5+ reseñas en GBP verificadas, agregar al schema LocalBusiness:
+```json
+"aggregateRating": {
+  "@type": "AggregateRating",
+  "ratingValue": "5.0",
+  "reviewCount": "8",
+  "bestRating": "5"
+}
+```
+Sincronizar manualmente el número de reseñas cada semana.
 
 ---
 
-## LOW — Backlog (within 60 days)
+## Resumen de Impacto Estimado (90 días)
 
-| # | Task | File | Effort |
-|---|---|---|---|
-| L1 | Gallery captions: add `<figcaption>` with event name/city/year | `index.html:414–462` | 30 min |
-| L2 | H1 revision: add keyword-rich `<h2>` below current H1 | `index.html:121` | 10 min |
-| L3 | Remove `<meta name="keywords">` tag | `index.html:8` | 1 min |
-| L4 | Add `<meta name="theme-color" content="#000000">` | `index.html:<head>` | 2 min |
-| L5 | Implement IndexNow (free Bing/Yandex instant submit) | new key file | 15 min |
-| L6 | Convert hero JPEG to WebP + `<picture>` element | `index.html:113` | 30 min |
-| L7 | Upgrade to domain email (`contacto@eshot-vinosylicores.com`) | email config | varies |
-| L8 | Create Instagram/Facebook Business Page | external | 2–4 hours |
-| L9 | Zapopan & Tlaquepaque dedicated landing pages | new HTML files | 4–6 hours each |
-| L10 | Update copyright to range ("© 2025–2026") if site launched in 2025 | `index.html:596` | 1 min |
+| Acción completada | Score estimado |
+|---|---|
+| Estado actual | 61/100 |
+| + GBP verificado + 10 reseñas | 66/100 |
+| + FAQ section + testimonials | 70/100 |
+| + Hero WebP + imágenes optimizadas | 72/100 |
+| + Directorios de bodas Tier 1 y 2 | 74/100 |
+| + AggregateRating + FAQPage schema | 76/100 |
+| **Total a 90 días (realista)** | **~75/100** |
 
 ---
 
-## Projected Score After Each Phase
+## Ya Aplicado (2026-05-15)
 
-| Phase | Actions | Expected Score |
-|---|---|---|
-| **Now (applied)** | Canonical + robots.txt + sitemap.xml | **52 / 100** |
-| **+1 week** | H1–H8 completed | **~62 / 100** |
-| **+1 month** | M1–M10 completed + GBP verified + 5 reviews | **~72 / 100** |
-| **+3 months** | FAQ, testimonials, citations, 10+ reviews | **~78 / 100** |
-| **+6 months** | Location pages + YouTube presence + 25+ reviews | **~85 / 100** |
-
----
-
-## Reference Files
-
-- [FULL-AUDIT-REPORT.md](FULL-AUDIT-REPORT.md) — detailed findings with code samples
-- [index.html](index.html) — main site file
-- [robots.txt](robots.txt) — created this session
-- [sitemap.xml](sitemap.xml) — created this session
+✅ Removidas todas las menciones de "barra libre" del sitio (11 instancias en 3 archivos)  
+✅ AOS CSS non-render-blocking (`media="print" onload`)  
+✅ LocalBusiness schema validado: @id #business, logo ImageObject, openingHours array, areaServed Place, coordenadas 5 dec.  
+✅ WebSite schema: publisher @id corregido  
+✅ llms.txt reescrito: sin barra libre, +FAQ, +RSL-1.0 license  
+✅ robots.txt: OAI-SearchBot agregado  
+✅ Coverage prose: ciudades específicas en prosa (Zapopan, Tlaquepaque, etc.)

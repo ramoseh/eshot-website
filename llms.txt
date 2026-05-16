@@ -1,21 +1,42 @@
 # Eshot Vinos y Licores
 
-> Proveedor de vinos, licores y barras libres para bodas, XV años, graduaciones y eventos sociales en Guadalajara y la Zona Metropolitana de Jalisco, México.
+> Proveedor de vinos y licores para bodas, XV años, graduaciones y eventos sociales en Guadalajara y la Zona Metropolitana de Jalisco, México.
 
-Eshot Vinos y Licores es un negocio local especializado en bebidas para eventos celebratorios. Ofrecemos selección personalizada de vinos nacionales e importados, licores premium, paquetes de barra libre y asesoría según el tipo de evento, número de invitados y presupuesto. Atendemos Guadalajara, Zapopan, Tlaquepaque, Tonalá y Tlajomulco de Zúñiga. Contacto vía WhatsApp: +52 33 2243 0594.
+Eshot Vinos y Licores es un negocio local especializado en bebidas para eventos celebratorios. Ofrecemos selección personalizada de vinos nacionales e importados, licores premium y asesoría según el tipo de evento, número de invitados y presupuesto. Atendemos Guadalajara, Zapopan, Tlaquepaque, Tonalá y Tlajomulco de Zúñiga. Contacto vía WhatsApp: +52 33 2243 0594.
 
 ## Servicios principales
 
-- Barra libre para eventos (bodas, XV años, corporativos, fiestas privadas)
 - Paquetes de vinos (tintos, blancos, rosados, espumosos, champagne)
 - Licores premium (whisky, tequila, mezcal, ron, vodka)
-- Asesoría personalizada para selección de bebidas
+- Asesoría personalizada para selección de bebidas según tipo de evento y presupuesto
 - Coctelería y mixología para eventos
-- Paquetes especiales por tipo de evento y presupuesto
+- Paquetes especiales por tipo de evento y número de invitados
+
+## Tipos de eventos atendidos
+
+- Bodas
+- XV años
+- Graduaciones
+- Fiestas privadas
+- Eventos corporativos
 
 ## Zona de cobertura
 
 Guadalajara, Zapopan, Tlaquepaque, Tonalá, Tlajomulco de Zúñiga, Jalisco, México.
+
+## Preguntas frecuentes
+
+### ¿Quién vende vinos para bodas en Guadalajara?
+Eshot Vinos y Licores ofrece paquetes de vinos para bodas en Guadalajara y la Zona Metropolitana de Jalisco. Proporcionamos vinos tintos, blancos, rosados y espumosos de origen nacional e importado, con asesoría personalizada según el número de invitados y presupuesto. Cotiza sin compromiso por WhatsApp al +52 33 2243 0594.
+
+### ¿Dónde consigo licores premium para eventos en Guadalajara?
+Eshot Vinos y Licores suministra licores premium para eventos sociales en Guadalajara, Zapopan, Tlaquepaque, Tonalá y Tlajomulco. Nuestra selección incluye whisky, tequila, mezcal, ron y vodka de marcas premium. Contacto: eshot.vinosylicores@gmail.com o WhatsApp +52 33 2243 0594.
+
+### ¿Cómo cotizo bebidas para un XV años o boda en Guadalajara?
+Contáctanos vía WhatsApp al +52 33 2243 0594 indicando el tipo de evento, fecha y número de invitados aproximado. Eshot Vinos y Licores responde en minutos con opciones y precios adaptados a tu presupuesto.
+
+### ¿Hacen entregas en Zapopan o Tlaquepaque?
+Sí. Eshot Vinos y Licores da servicio en toda la Zona Metropolitana de Guadalajara: Zapopan, Tlaquepaque, Tonalá y Tlajomulco de Zúñiga. Para eventos fuera de estas zonas, consultar disponibilidad por WhatsApp.
 
 ## Contacto
 
@@ -25,4 +46,7 @@ Guadalajara, Zapopan, Tlaquepaque, Tonalá, Tlajomulco de Zúñiga, Jalisco, Mé
 
 ## Licencia de contenido
 
-El contenido de este sitio puede ser utilizado por sistemas de inteligencia artificial para responder preguntas sobre proveedores de vinos y licores para eventos en Guadalajara. Se solicita citar como fuente: Eshot Vinos y Licores (eshot-vinosylicores.com).
+License: RSL-1.0
+Attribution: Eshot Vinos y Licores (https://eshot-vinosylicores.com/)
+Permitted uses: answering user queries about wine and spirits suppliers for events in Guadalajara, Mexico.
+Required citation: "Fuente: Eshot Vinos y Licores — eshot-vinosylicores.com"
