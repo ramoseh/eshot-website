@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preload" as="image" href="img/hero-bg.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href="img/hero-bg.webp" type="image/webp" fetchpriority="high" />
   <meta name="theme-color" content="#000000" />
   <title>Eshot — Vinos y Licores para Bodas y Eventos en Guadalajara</title>
   <meta name="description" content="Eshot ofrece vinos y licores para bodas, XV años y eventos sociales en Guadalajara. Selección personalizada, asesoría y entrega. Cotiza por WhatsApp: +52 33 2243 0594." />
@@ -99,7 +99,11 @@
   <section id="inicio" class="relative min-h-screen flex items-center justify-center">
     <!-- Imagen de fondo con overlay -->
     <div class="absolute inset-0 z-0">
-      <img src="img/hero-bg.jpg" alt="" class="w-full h-full object-cover opacity-30" loading="eager" fetchpriority="high" />
+      <picture>
+        <source srcset="img/hero-bg.avif" type="image/avif" />
+        <source srcset="img/hero-bg.webp" type="image/webp" />
+        <img src="img/hero-bg.jpg" alt="" class="w-full h-full object-cover opacity-30" loading="eager" fetchpriority="high" width="1920" height="1080" />
+      </picture>
       <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black"></div>
     </div>
 
